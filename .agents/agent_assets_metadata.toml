@@ -1,0 +1,62 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "q4FmGKigQ10Kr3ZTHGuop"
+uri = "file://artifacts/portfolio/public/images/portfolio-1.png"
+type = "image"
+title = "Cinematic short form reel thumbnail"
+
+[[generated]]
+id = "kw_PJThBPxFuP7-kj_cnz"
+uri = "file://artifacts/portfolio/public/images/portfolio-2.png"
+type = "image"
+title = "Cinematic tech review thumbnail"
+
+[[generated]]
+id = "0WvNyrV6bIDiVKu-F2kOu"
+uri = "file://artifacts/portfolio/public/images/portfolio-3.png"
+type = "image"
+title = "Podcast interview thumbnail"
+
+[[generated]]
+id = "AQFUs0FDhywLixju9WXyd"
+uri = "file://artifacts/portfolio/public/images/portfolio-4.png"
+type = "image"
+title = "Viral TikTok style short"
+
+[[generated]]
+id = "Yu4mDk_hqaexXRJMGLn07"
+uri = "file://artifacts/portfolio/public/images/portfolio-5.png"
+type = "image"
+title = "Commercial product ad"
+
+[[generated]]
+id = "wANqnYJO0EhgeaH98aruy"
+uri = "file://artifacts/portfolio/public/images/portfolio-6.png"
+type = "image"
+title = "Cinematic travel vlog thumbnail"
+
+[[generated]]
+id = "I_IpWzCO4P3eROfIga6-R"
+uri = "file://artifacts/portfolio/public/images/avatar-1.png"
+type = "image"
+title = "Client avatar 1"
+
+[[generated]]
+id = "hyOe3a_jzWdEn91tB2JOC"
+uri = "file://artifacts/portfolio/public/images/avatar-2.png"
+type = "image"
+title = "Client avatar 2"
+
+[[generated]]
+id = "W00wvYIf5-Pcsxb0ad7QZ"
+uri = "file://artifacts/portfolio/public/images/avatar-3.png"
+type = "image"
+title = "Client avatar 3"
+
+[[generated]]
+id = "UaWVeF1Kf2axl80B0ydL6"
+uri = "file://artifacts/portfolio/public/images/avatar-4.png"
+type = "image"
+title = "Client avatar 4"

@@ -1,0 +1,322 @@
+Project: Premium Video Editor Portfolio & Lead Generation Website
+
+Goal
+
+Build a modern, high-converting portfolio website for a freelance video editor that showcases work, builds trust, and converts visitors into paying clients.
+
+User Personas
+
+1. Content Creator
+
+Wants short-form video editing
+
+Wants to see portfolio quickly
+
+Needs proof of results
+
+2. Business Owner
+
+Looking for social media content
+
+Wants professionalism and reliability
+
+Needs easy contact options
+
+3. Influencer
+
+Wants engaging reels and shorts
+
+Wants before/after examples
+
+Wants fast turnaround
+
+Pages
+
+Home Page
+
+Hero Section
+
+Headline:
+
+Turn Your Content Into Scroll-Stopping Stories
+
+Subheadline:
+
+Professional video editing for creators, influencers, coaches, and brands.
+
+CTA Buttons:
+
+Book a Call
+
+View Portfolio
+
+Background:
+
+Cinematic animated video montage
+
+Modern dark theme
+
+About Section
+
+Display:
+
+Professional photo
+
+Short bio
+
+Years of experience
+
+Number of videos edited
+
+Number of clients served
+
+Example:
+
+3+ Years Experience
+
+500+ Videos Edited
+
+50+ Happy Clients
+
+Services Section
+
+Cards:
+
+Short Form Editing
+
+Reels
+
+Shorts
+
+TikTok
+
+Long Form Editing
+
+YouTube videos
+
+Podcasts
+
+Motion Graphics
+
+Titles
+
+Captions
+
+Animations
+
+Thumbnail Design
+
+High CTR thumbnails
+
+Pricing:
+Starting prices optional
+
+Portfolio Section
+
+Video Gallery
+
+Features:
+
+Vimeo embed
+
+YouTube embed
+
+Categories filter
+
+Filters:
+
+Reels
+
+Shorts
+
+YouTube
+
+Podcasts
+
+Commercial
+
+Each project shows:
+
+Thumbnail
+
+Client Name
+
+Project Type
+
+Results achieved
+
+Results Section
+
+Show real metrics:
+
+Example:
+
+2M+ Views Generated
+
+150% Engagement Growth
+
+100+ Viral Reels
+
+Display as animated counters.
+
+Testimonials
+
+Carousel with:
+
+Client image
+
+Review
+
+Rating
+
+Company/Creator name
+
+Add video testimonials support.
+
+Why Choose Me
+
+Cards:
+
+Fast Delivery
+
+Unlimited Revisions
+
+Creative Storytelling
+
+Data-Driven Editing
+
+Platform Optimization
+
+Process Section
+
+Step 1:
+Send Raw Footage
+
+Step 2:
+Editing & Review
+
+Step 3:
+Final Delivery
+
+Step 4:
+Growth & Optimization
+
+Contact Section
+
+Lead Form:
+
+Fields:
+
+Name
+
+Email
+
+WhatsApp
+
+Project Type
+
+Budget
+
+Message
+
+Submit to:
+
+Email
+
+Google Sheets
+
+CRM
+
+Admin Dashboard
+
+Create a simple dashboard where owner can:
+
+Add portfolio videos
+
+Edit testimonials
+
+Update services
+
+View leads
+
+Export leads
+
+AI Features
+
+AI Portfolio Assistant
+
+Chat widget:
+
+Visitors ask:
+
+Pricing
+
+Services
+
+Turnaround time
+
+AI answers automatically.
+
+Technical Requirements
+
+Next.js
+
+TypeScript
+
+Tailwind CSS
+
+Supabase Backend
+
+Framer Motion Animations
+
+Responsive Design
+
+SEO Optimized
+
+ADA Accessible
+
+Lighthouse Score 90+
+
+Conversion Features
+
+Sticky "Book Call" button
+
+WhatsApp floating button
+
+Calendly integration
+
+Lead capture popup
+
+Exit intent popup
+
+Design Style
+
+Theme:
+
+Premium Dark Mode
+
+Colors:
+
+Black
+
+Charcoal
+
+Electric Purple Accent
+
+Inspiration:
+
+Apple
+
+Stripe
+
+Agency Portfolio Sites
+
+Animations:
+
+Smooth scroll
+
+Fade transitions
+
+Hover effects
+
+Video previews on hover
