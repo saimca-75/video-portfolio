@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import editorPhoto from "@assets/image_1781761484095.png";
+import editorPhoto from "@assets/ChatGPT_Image_Jun_18,_2026,_11_30_10_AM_1781762448283.png";
 
 function Counter({ end, suffix = "", duration = 2 }: { end: number; suffix?: string; duration?: number }) {
   const [count, setCount] = useState(0);
