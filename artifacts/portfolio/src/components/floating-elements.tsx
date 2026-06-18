@@ -9,15 +9,16 @@ export default function FloatingElements() {
     const handleScroll = () => {
       // Show mobile CTA after scrolling down a bit, hide near bottom
       const scrollY = window.scrollY;
-      const isNearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 800;
-      
+      const isNearBottom =
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 800;
+
       if (scrollY > 300 && !isNearBottom) {
         setShowMobileCta(true);
       } else {
         setShowMobileCta(false);
       }
     };
-    
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -34,7 +35,7 @@ export default function FloatingElements() {
     <>
       {/* WhatsApp FAB - Desktop & Mobile */}
       <a
-        href="https://wa.me/15551234567"
+        href="https://wa.me/9182812899"
         target="_blank"
         rel="noreferrer"
         className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg hover:scale-110 transition-transform shadow-green-500/20 group"
@@ -47,12 +48,12 @@ export default function FloatingElements() {
       </a>
 
       {/* Mobile Sticky CTA */}
-      <div 
+      <div
         className={`md:hidden fixed bottom-0 left-0 right-0 p-4 bg-background/80 backdrop-blur-xl border-t border-white/10 z-40 transition-transform duration-300 ${
           showMobileCta ? "translate-y-0" : "translate-y-full"
         }`}
       >
-        <Button 
+        <Button
           onClick={handleScrollToContact}
           className="w-full h-12 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl text-base shadow-lg shadow-primary/20"
         >
