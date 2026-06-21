@@ -98,13 +98,13 @@ export default function About() {
             <div className="grid grid-cols-3 gap-6 pt-8 border-t border-white/10">
               <div>
                 <p className="text-4xl md:text-5xl font-display font-bold text-white mb-2">
-                  <Counter end={3} suffix="+" />
+                  <Counter end={1} suffix="+" />
                 </p>
                 <p className="text-sm font-medium text-muted-foreground">Years Exp.</p>
               </div>
               <div>
                 <p className="text-4xl md:text-5xl font-display font-bold text-primary mb-2">
-                  <Counter end={500} suffix="+" />
+                  <Counter end={100} suffix="+" />
                 </p>
                 <p className="text-sm font-medium text-muted-foreground">Videos Edited</p>
               </div>

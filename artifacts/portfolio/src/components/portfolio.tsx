@@ -18,15 +18,6 @@ type PortfolioItem = {
 const portfolioItems: PortfolioItem[] = [
   {
     id: 1,
-    title: "Chanti 21 — Before & After",
-    client: "Real Client Work",
-    category: "Short Form",
-    results: "Cinematic B&A Edit",
-    video: "/videos/chanti-ba.mp4",
-    tag: "Before & After",
-  },
-  {
-    id: 2,
     title: "Chanti Gadu — Instagram Reel",
     client: "Real Client Work",
     category: "Short Form",
@@ -35,36 +26,13 @@ const portfolioItems: PortfolioItem[] = [
     tag: "Reel",
   },
   {
-    id: 3,
-    title: "Fitness Transformation",
-    client: "Iron Coaching",
+    id: 2,
+    title: "Chanti 21 — Before & After",
+    client: "Real Client Work",
     category: "Short Form",
-    results: "3M+ Views · Viral Hit",
-    image: "/images/portfolio-1.png",
-  },
-  {
-    id: 4,
-    title: "Tech Review Masterclass",
-    client: "Marques Tech",
-    category: "Long Form",
-    results: "1.2M Views · 15% CTR",
-    image: "/images/portfolio-2.png",
-  },
-  {
-    id: 5,
-    title: "Founder Podcast Ep. 42",
-    client: "StartUp Diaries",
-    category: "Long Form",
-    results: "500K Views · High Retention",
-    image: "/images/portfolio-3.png",
-  },
-  {
-    id: 6,
-    title: "Luxury Sports Car Ad",
-    client: "Apex Motors",
-    category: "Commercial",
-    results: "400% ROAS on Campaign",
-    image: "/images/portfolio-5.png",
+    results: "Cinematic B&A Edit",
+    video: "/videos/chanti-ba2.mp4",
+    tag: "Before & After",
   },
 ];
 
