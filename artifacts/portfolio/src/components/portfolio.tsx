@@ -18,16 +18,16 @@ type PortfolioItem = {
 const portfolioItems: PortfolioItem[] = [
   {
     id: 1,
-    title: "Chanti Gadu — Instagram Reel",
+    title: "Instagram Reel",
     client: "Real Client Work",
     category: "Short Form",
     results: "Viral Instagram Reel",
-    video: "/videos/chanti-instagram.mp4",
+    video: "/videos/chanti-reel-new.mp4",
     tag: "Reel",
   },
   {
     id: 2,
-    title: "Chanti 21 — Before & After",
+    title: "Before & After",
     client: "Real Client Work",
     category: "Short Form",
     results: "Cinematic B&A Edit",

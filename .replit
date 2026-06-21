@@ -30,3 +30,12 @@ externalPort = 80
 [[ports]]
 localPort = 21113
 externalPort = 3000
+
+[userenv]
+
+[userenv.shared]
+SMTP_HOST = "smtp.gmail.com"
+SMTP_PORT = "465"
+NOTIFY_EMAIL = "bandarusalman9@gmail.com"
+SMTP_USER = "bandarusalman9@gmail.com"
+SMTP_PASS = "aefyqfxciaofqcxt"
