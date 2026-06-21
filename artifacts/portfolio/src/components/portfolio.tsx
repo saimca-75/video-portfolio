@@ -34,6 +34,15 @@ const portfolioItems: PortfolioItem[] = [
     video: "/videos/chanti-ba2.mp4",
     tag: "Before & After",
   },
+  {
+    id: 3,
+    title: "Chanti Cover Song",
+    client: "Real Client Work",
+    category: "Long Form",
+    results: "Full Length Edit",
+    video: "https://nkb-backend-ccbp-media-static.s3-ap-south-1.amazonaws.com/ccbp_gamma/media/content_loading/uploads/0b4e3479-de6b-4381-9e19-70e96f5d5605_chanti%20cover%20song%20(long%20video).mp4",
+    tag: "Long Form",
+  },
 ];
 
 function VideoCard({ item, onClick }: { item: PortfolioItem; onClick: () => void }) {

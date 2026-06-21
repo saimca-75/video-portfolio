@@ -1,7 +1,16 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { format } from "date-fns";
-import { Lock, Mail, Phone, MessageSquare, Calendar, DollarSign, Video, Download } from "lucide-react";
+import {
+  Lock,
+  Mail,
+  Phone,
+  MessageSquare,
+  Calendar,
+  DollarSign,
+  Video,
+  Download,
+} from "lucide-react";
 
 interface Lead {
   id: number;
@@ -22,17 +31,21 @@ const PROJECT_LABELS: Record<string, string> = {
 };
 
 const BUDGET_LABELS: Record<string, string> = {
-  "under-100": "Under $100",
-  "100-500": "$100 – $500",
-  "500-1000": "$500 – $1,000",
-  "1000+": "$1,000+",
+  "under-1000": "Under 1000",
+  "1000-3000": "1000 – 3000",
+  "3000-5000": "3000 – 5000",
+  "5000+": "5000+",
 };
 
 export default function Admin() {
   const [secret, setSecret] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  const { data: leads, isLoading, isError } = useQuery<Lead[]>({
+  const {
+    data: leads,
+    isLoading,
+    isError,
+  } = useQuery<Lead[]>({
     queryKey: ["leads", submitted ? secret : null],
     enabled: submitted && secret.length > 0,
     queryFn: async () => {
@@ -81,7 +94,9 @@ export default function Admin() {
               <Lock className="w-5 h-5 text-purple-400" />
             </div>
             <h1 className="text-xl font-bold text-white">Admin Access</h1>
-            <p className="text-sm text-gray-400">Enter your admin password to view leads</p>
+            <p className="text-sm text-gray-400">
+              Enter your admin password to view leads
+            </p>
           </div>
           <input
             type="password"
@@ -111,7 +126,11 @@ export default function Admin() {
           <div>
             <h1 className="text-3xl font-bold text-white">Leads</h1>
             <p className="text-gray-400 mt-1">
-              {isLoading ? "Loading..." : leads ? `${leads.length} total submissions` : ""}
+              {isLoading
+                ? "Loading..."
+                : leads
+                  ? `${leads.length} total submissions`
+                  : ""}
             </p>
           </div>
           {leads && leads.length > 0 && (
@@ -127,14 +146,21 @@ export default function Admin() {
         </div>
 
         {isLoading && (
-          <div className="text-center py-20 text-gray-400">Loading leads...</div>
+          <div className="text-center py-20 text-gray-400">
+            Loading leads...
+          </div>
         )}
 
         {isError && (
           <div className="text-center py-20">
-            <p className="text-red-400 font-semibold">Wrong password. Try again.</p>
+            <p className="text-red-400 font-semibold">
+              Wrong password. Try again.
+            </p>
             <button
-              onClick={() => { setSubmitted(false); setSecret(""); }}
+              onClick={() => {
+                setSubmitted(false);
+                setSecret("");
+              }}
               className="mt-4 text-purple-400 hover:underline text-sm"
             >
               Go back
@@ -143,7 +169,9 @@ export default function Admin() {
         )}
 
         {leads && leads.length === 0 && (
-          <div className="text-center py-20 text-gray-500">No leads yet. Share your portfolio link!</div>
+          <div className="text-center py-20 text-gray-500">
+            No leads yet. Share your portfolio link!
+          </div>
         )}
 
         {leads && leads.length > 0 && (
@@ -156,11 +184,16 @@ export default function Admin() {
               >
                 <div className="flex items-start justify-between gap-4 flex-wrap">
                   <div>
-                    <h2 className="text-lg font-bold text-white">{lead.name}</h2>
+                    <h2 className="text-lg font-bold text-white">
+                      {lead.name}
+                    </h2>
                     <div className="flex flex-wrap gap-3 mt-2">
                       <span className="flex items-center gap-1.5 text-sm text-gray-300">
                         <Mail className="w-3.5 h-3.5 text-purple-400" />
-                        <a href={`mailto:${lead.email}`} className="hover:text-purple-400 transition-colors">
+                        <a
+                          href={`mailto:${lead.email}`}
+                          className="hover:text-purple-400 transition-colors"
+                        >
                           {lead.email}
                         </a>
                       </span>
@@ -191,7 +224,9 @@ export default function Admin() {
 
                 <div className="flex gap-2 pt-1">
                   <MessageSquare className="w-4 h-4 text-gray-500 shrink-0 mt-0.5" />
-                  <p className="text-sm text-gray-300 leading-relaxed">{lead.message}</p>
+                  <p className="text-sm text-gray-300 leading-relaxed">
+                    {lead.message}
+                  </p>
                 </div>
               </div>
             ))}

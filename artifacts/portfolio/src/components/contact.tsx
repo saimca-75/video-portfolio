@@ -59,7 +59,9 @@ export default function Contact() {
       toast.success("Message sent! I'll be in touch within 24 hours.");
       form.reset();
     } catch {
-      toast.error("Something went wrong. Please try again or reach out directly.");
+      toast.error(
+        "Something went wrong. Please try again or reach out directly.",
+      );
     } finally {
       setSubmitting(false);
     }
@@ -179,7 +181,7 @@ export default function Contact() {
                         </FormLabel>
                         <FormControl>
                           <Input
-                            placeholder="+1 234 567 8900"
+                            placeholder="+91 &nbsp; 1234567890"
                             className="bg-white/5 border-white/10 focus-visible:ring-primary"
                             {...field}
                           />
@@ -218,6 +220,14 @@ export default function Contact() {
                             <SelectItem value="thumbnail">
                               Thumbnail Design
                             </SelectItem>
+                            <SelectItem value="ai">AI Videos</SelectItem>
+                            <SelectItem value="Wedding">
+                              Wedding Invitation/Teaser Videos
+                            </SelectItem>
+                            <SelectItem value="brand">Brand Kit</SelectItem>
+                            <SelectItem value="all">
+                              All Type Of Editing
+                            </SelectItem>
                           </SelectContent>
                         </Select>
                         <FormMessage />
@@ -244,12 +254,16 @@ export default function Contact() {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent className="bg-card border-white/10">
-                          <SelectItem value="under-100">Under $100</SelectItem>
-                          <SelectItem value="100-500">$100 - $500</SelectItem>
-                          <SelectItem value="500-1000">
-                            $500 - $1,000
+                          <SelectItem value="under-1000">
+                            ₹ 700 - ₹ 1000
                           </SelectItem>
-                          <SelectItem value="1000+">$1,000+</SelectItem>
+                          <SelectItem value="1000-3000">
+                            ₹ 1000 - ₹ 3000
+                          </SelectItem>
+                          <SelectItem value="3000-5000">
+                            ₹ 3000 - ₹ 5000
+                          </SelectItem>
+                          <SelectItem value="5000+">₹ 5000+</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />
