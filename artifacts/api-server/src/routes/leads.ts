@@ -50,140 +50,100 @@ function getTransporter() {
 }
 
 async function sendLeadEmail(lead: {
-  name: string;
-  email: string;
-  whatsapp?: string;
-  projectType: string;
-  budget: string;
-  message: string;
+name: string;
+email: string;
+whatsapp?: string;
+projectType: string;
+budget: string;
+message: string;
 }) {
-  const transporter = getTransporter();
-  const notifyEmail = process.env.NOTIFY_EMAIL || process.env.SMTP_USER;
-  
+const transporter = getTransporter();
 
-  if (!transporter || !notifyEmail) {
-    throw new Error(
-      "SMTP configuration missing. Check SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS."
-    );
-  }
+if (!transporter) {
+throw new Error(
+"SMTP configuration missing. Check SMTP_HOST, SMTP_PORT, SMTP_USER and SMTP_PASS."
+);
+}
 
-  const projectLabel =
-    PROJECT_LABELS[lead.projectType] ?? lead.projectType;
+const notifyEmail =
+process.env.NOTIFY_EMAIL || process.env.SMTP_USER;
 
-  const budgetLabel =
-    BUDGET_LABELS[lead.budget] ?? lead.budget;
+if (!notifyEmail) {
+throw new Error("NOTIFY_EMAIL missing");
+}
 
-  // OWNER EMAIL
-  await transporter.sendMail({
-    from: `"Portfolio Notifications" <${process.env.SMTP_USER}>`,
-    to: notifyEmail,
-    subject: `New Lead: ${lead.name} — ${projectLabel}`,
-    html: `
-      <h2>New Portfolio Lead</h2>
+console.log("SMTP_HOST:", process.env.SMTP_HOST);
+console.log("SMTP_PORT:", process.env.SMTP_PORT);
 
-      <p><strong>Name:</strong> ${lead.name}</p>
-      <p><strong>Email:</strong> ${lead.email}</p>
+await transporter.verify();
+console.log("SMTP verified successfully");
 
-      ${
-        lead.whatsapp
-          ? `<p><strong>WhatsApp:</strong> ${lead.whatsapp}</p>`
-          : ""
-      }
+const projectLabel =
+PROJECT_LABELS[lead.projectType] ?? lead.projectType;
 
-      <p><strong>Project Type:</strong> ${projectLabel}</p>
-      <p><strong>Budget:</strong> ${budgetLabel}</p>
+const budgetLabel =
+BUDGET_LABELS[lead.budget] ?? lead.budget;
 
-      <h3>Message</h3>
-
-      <p>${lead.message}</p>
+const ownerMail = await transporter.sendMail({
+from: `"Portfolio Notifications" <${process.env.SMTP_USER}>`,
+to: notifyEmail,
+subject: `New Lead: ${lead.name} — ${projectLabel}`,
+html: `       <h2>New Portfolio Lead</h2>       <p><strong>Name:</strong> ${lead.name}</p>       <p><strong>Email:</strong> ${lead.email}</p>       <p><strong>WhatsApp:</strong> ${lead.whatsapp ?? "-"}</p>       <p><strong>Project Type:</strong> ${projectLabel}</p>       <p><strong>Budget:</strong> ${budgetLabel}</p>       <p><strong>Message:</strong> ${lead.message}</p>
     `,
-  });
+});
 
-  // USER CONFIRMATION EMAIL
-  await transporter.sendMail({
-    from: `"Chanti Studio" <${process.env.SMTP_USER}>`,
-    to: lead.email,
-    subject: "We received your project inquiry",
-    html: `
-      <div style="font-family:Arial,sans-serif;max-width:600px;margin:auto;">
-        <h2>Hello ${lead.name},</h2>
+console.log("Owner email sent:", ownerMail.messageId);
 
-        <p>
-          Thank you for contacting Chanti Studio.
-        </p>
-
-        <p>
-          We have received your project inquiry and will review it shortly.
-        </p>
-
-        <p>
-          You can expect a response within 24 hours.
-        </p>
-
-        <hr />
-
-        <h3>Your Submission</h3>
-
-        <p><strong>Project Type:</strong> ${projectLabel}</p>
-        <p><strong>Budget:</strong> ${budgetLabel}</p>
-
-        ${
-          lead.whatsapp
-            ? `<p><strong>WhatsApp:</strong> ${lead.whatsapp}</p>`
-            : ""
-        }
-
-        <p><strong>Message:</strong></p>
-
-        <p>${lead.message}</p>
-
-        <br/>
-
-        <p>
-          Thanks,<br/>
-          Chanti Studio
-        </p>
-      </div>
+const customerMail = await transporter.sendMail({
+from: `"Chanti Studio" <${process.env.SMTP_USER}>`,
+to: lead.email,
+subject: "We received your project inquiry",
+html: `       <h2>Hello ${lead.name}</h2>       <p>Thank you for contacting Chanti Studio.</p>       <p>We have received your inquiry and will respond within 24 hours.</p>
     `,
-  });
+});
+
+console.log("Customer email sent:", customerMail.messageId);
 }
 
 router.post("/leads", async (req, res): Promise<void> => {
-  try {
-    const parsed = createLeadSchema.safeParse(req.body);
+try {
+const parsed = createLeadSchema.safeParse(req.body);
 
-    if (!parsed.success) {
-      res.status(400).json({
-        success: false,
-        error: parsed.error.message,
-      });
-      return;
-    }
-    await sendLeadEmail(parsed.data);
-    console.log("Lead received:", parsed.data);
 
-    logger.info(
-      {
-        email: parsed.data.email,
-      },
-      "Lead submitted successfully"
-    );
+if (!parsed.success) {
+  res.status(400).json({
+    success: false,
+    error: parsed.error.message,
+  });
+  return;
+}
 
-    res.status(201).json({
-      success: true,
-      message: "Lead submitted successfully",
-    });
-  } catch (error) {
-    logger.error(
-      { error },
-      "Failed to process lead"
-    );
+await sendLeadEmail(parsed.data);
 
-    res.status(500).json({
-      success: false,
-      error: "Failed to submit lead",
-    });
-  }
+logger.info(
+  {
+    email: parsed.data.email,
+  },
+  "Lead submitted successfully"
+);
+
+res.status(201).json({
+  success: true,
+  message: "Lead submitted successfully",
+});
+
+
+} catch (error) {
+logger.error({ error }, "Failed to process lead");
+
+
+res.status(500).json({
+  success: false,
+  error: "Failed to submit lead",
+});
+
+
+}
 });
 
 export default router;
