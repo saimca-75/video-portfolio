@@ -2,6 +2,7 @@ import { Router, type IRouter } from "express";
 import { z } from "zod";
 import { logger } from "../lib/logger";
 import nodemailer from "nodemailer";
+import dns from "node:dns/promises";
 
 const router: IRouter = Router();
 
@@ -28,7 +29,7 @@ const BUDGET_LABELS: Record<string, string> = {
   "1000+": "$1,000+",
 };
 
-function getTransporter() {
+async function getTransporter() {
   const host = process.env.SMTP_HOST;
   const port = parseInt(process.env.SMTP_PORT ?? "587", 10);
   const user = process.env.SMTP_USER;
@@ -38,14 +39,31 @@ function getTransporter() {
     return null;
   }
 
+  let resolvedHost = host;
+  try {
+    const ipv4Addresses = await dns.resolve4(host);
+    if (ipv4Addresses.length > 0) {
+      resolvedHost = ipv4Addresses[0];
+      console.log(`Resolved SMTP host ${host} to IPv4: ${resolvedHost}`);
+    }
+  } catch (dnsError) {
+    console.warn(`DNS resolution to IPv4 failed for ${host}, using hostname directly:`, dnsError);
+  }
+
   return nodemailer.createTransport({
-    host,
+    host: resolvedHost,
     port,
     secure: false,
     auth: {
       user,
       pass,
     },
+    tls: {
+      servername: host, // Ensure TLS verifies the original hostname
+    },
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 10000,
   });
 }
 
@@ -57,7 +75,7 @@ projectType: string;
 budget: string;
 message: string;
 }) {
-const transporter = getTransporter();
+const transporter = await getTransporter();
 
 if (!transporter) {
 throw new Error(
