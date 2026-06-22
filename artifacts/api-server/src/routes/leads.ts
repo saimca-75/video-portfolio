@@ -118,13 +118,22 @@ router.post("/leads", async (req, res) => {
 
     console.log("Lead received:", parsed.data);
 
+    await sendLeadEmail(parsed.data);
+
+    logger.info(
+      {
+        email: parsed.data.email,
+      },
+      "Lead submitted successfully"
+    );
+
     return res.status(201).json({
       success: true,
       message: "Lead submitted successfully",
       lead: parsed.data,
     });
   } catch (error) {
-    console.error(error);
+    logger.error({ error }, "Failed to process lead");
 
     return res.status(500).json({
       success: false,
