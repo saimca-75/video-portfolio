@@ -52,7 +52,7 @@ async function onSubmit(values: z.infer<typeof formSchema>) {
 
   try {
     const res = await fetch(
-      "https://video-portfolio-677n.onrender.com/api/leads",
+      "https://video-portfolio-1-5x2n.onrender.com/api/leads",
       {
         method: "POST",
         headers: {
