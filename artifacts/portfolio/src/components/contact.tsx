@@ -47,25 +47,36 @@ export default function Contact() {
     },
   });
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    setSubmitting(true);
-    try {
-      const res = await fetch("/api/leads", {
+async function onSubmit(values: z.infer<typeof formSchema>) {
+  setSubmitting(true);
+
+  try {
+    const res = await fetch(
+      "https://video-portfolio-677n.onrender.com/api/leads",
+      {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
         body: JSON.stringify(values),
-      });
-      if (!res.ok) throw new Error("Failed to submit");
-      toast.success("Message sent! I'll be in touch within 24 hours.");
-      form.reset();
-    } catch {
-      toast.error(
-        "Something went wrong. Please try again or reach out directly.",
-      );
-    } finally {
-      setSubmitting(false);
+      },
+    );
+
+    if (!res.ok) {
+      throw new Error("Failed to submit");
     }
+
+    toast.success("Message sent! I'll be in touch within 24 hours.");
+    form.reset();
+  } catch {
+    toast.error(
+      "Something went wrong. Please try again or reach out directly.",
+    );
+  } finally {
+    setSubmitting(false);
   }
+}
 
   return (
     <section id="contact" className="py-24 relative bg-card/50">
