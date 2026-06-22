@@ -105,45 +105,32 @@ html: `       <h2>Hello ${lead.name}</h2>       <p>Thank you for contacting Chan
 console.log("Customer email sent:", customerMail.messageId);
 }
 
-router.post("/leads", async (req, res): Promise<void> => {
-try {
-const parsed = createLeadSchema.safeParse(req.body);
+router.post("/leads", async (req, res) => {
+  try {
+    const parsed = createLeadSchema.safeParse(req.body);
 
+    if (!parsed.success) {
+      return res.status(400).json({
+        success: false,
+        error: parsed.error.message,
+      });
+    }
 
-if (!parsed.success) {
-  res.status(400).json({
-    success: false,
-    error: parsed.error.message,
-  });
-  return;
-}
+    console.log("Lead received:", parsed.data);
 
-await sendLeadEmail(parsed.data);
+    return res.status(201).json({
+      success: true,
+      message: "Lead submitted successfully",
+      lead: parsed.data,
+    });
+  } catch (error) {
+    console.error(error);
 
-logger.info(
-  {
-    email: parsed.data.email,
-  },
-  "Lead submitted successfully"
-);
-
-res.status(201).json({
-  success: true,
-  message: "Lead submitted successfully",
-});
-
-
-} catch (error) {
-logger.error({ error }, "Failed to process lead");
-
-
-res.status(500).json({
-  success: false,
-  error: "Failed to submit lead",
-});
-
-
-}
+    return res.status(500).json({
+      success: false,
+      error: "Failed to submit lead",
+    });
+  }
 });
 
 export default router;
