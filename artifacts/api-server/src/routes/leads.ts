@@ -59,6 +59,7 @@ async function sendLeadEmail(lead: {
 }) {
   const transporter = getTransporter();
   const notifyEmail = process.env.NOTIFY_EMAIL || process.env.SMTP_USER;
+  
 
   if (!transporter || !notifyEmail) {
     throw new Error(
@@ -158,7 +159,7 @@ router.post("/leads", async (req, res): Promise<void> => {
       });
       return;
     }
-
+    await sendLeadEmail(parsed.data);
     console.log("Lead received:", parsed.data);
 
     logger.info(
