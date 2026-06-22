@@ -43,6 +43,15 @@ const portfolioItems: PortfolioItem[] = [
     video: "https://nkb-backend-ccbp-media-static.s3-ap-south-1.amazonaws.com/ccbp_gamma/media/content_loading/uploads/0b4e3479-de6b-4381-9e19-70e96f5d5605_chanti%20cover%20song%20(long%20video).mp4",
     tag: "Long Form",
   },
+  {
+    id: 4,
+    title: "Salman SR Construction",
+    client: "Real Client Work",
+    category: "Commercial",
+    results: "Commercial Edit",
+    video: "https://nkb-backend-ccbp-media-static.s3-ap-south-1.amazonaws.com/ccbp_gamma/media/content_loading/uploads/3d8c0ad2-d60c-45b6-8469-79ccd127ab4c_salman%20sr%20%20constrction%20%20%20.mp4",
+    tag: "Commercial",
+  },
 ];
 
 function VideoCard({ item, onClick }: { item: PortfolioItem; onClick: () => void }) {

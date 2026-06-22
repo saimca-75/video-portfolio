@@ -36,15 +36,22 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/80 backdrop-blur-md border-b border-white/5 py-3" : "bg-transparent py-5"
+        scrolled
+          ? "bg-background/80 backdrop-blur-md border-b border-white/5 py-3"
+          : "bg-transparent py-5"
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-        <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo(0, 0)}>
+        <div
+          className="flex items-center gap-2 cursor-pointer"
+          onClick={() => window.scrollTo(0, 0)}
+        >
           <div className="w-8 h-8 rounded bg-primary flex items-center justify-center font-display font-bold text-lg text-white">
-            V
+            C
           </div>
-          <span className="font-display font-bold text-xl tracking-tight">STUDIO</span>
+          <span className="font-display font-bold text-xl tracking-tight">
+            STUDIO
+          </span>
         </div>
 
         {/* Desktop Nav */}
@@ -58,7 +65,10 @@ export default function Navbar() {
               {link.name}
             </button>
           ))}
-          <Button onClick={() => handleScrollTo("#contact")} className="font-semibold bg-primary hover:bg-primary/90 text-white rounded-full px-6">
+          <Button
+            onClick={() => handleScrollTo("#contact")}
+            className="font-semibold bg-primary hover:bg-primary/90 text-white rounded-full px-6"
+          >
             Book a Call
           </Button>
         </nav>
@@ -71,7 +81,10 @@ export default function Navbar() {
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="bg-background/95 backdrop-blur-lg border-l-white/10 w-[300px]">
+            <SheetContent
+              side="right"
+              className="bg-background/95 backdrop-blur-lg border-l-white/10 w-[300px]"
+            >
               <div className="flex flex-col gap-6 mt-12">
                 {navLinks.map((link) => (
                   <button
@@ -82,7 +95,10 @@ export default function Navbar() {
                     {link.name}
                   </button>
                 ))}
-                <Button onClick={() => handleScrollTo("#contact")} className="w-full font-semibold bg-primary hover:bg-primary/90 text-white rounded-full mt-4">
+                <Button
+                  onClick={() => handleScrollTo("#contact")}
+                  className="w-full font-semibold bg-primary hover:bg-primary/90 text-white rounded-full mt-4"
+                >
                   Book a Call
                 </Button>
               </div>
