@@ -159,7 +159,7 @@ router.post("/leads", async (req, res): Promise<void> => {
       return;
     }
 
-    await sendLeadEmail(parsed.data);
+    console.log("Lead received:", parsed.data);
 
     logger.info(
       {
